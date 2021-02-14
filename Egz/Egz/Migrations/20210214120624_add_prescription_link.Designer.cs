@@ -4,14 +4,16 @@ using Egz.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Egz.Migrations
 {
     [DbContext(typeof(EgzDbContext))]
-    partial class EgzDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210214120624_add_prescription_link")]
+    partial class add_prescription_link
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

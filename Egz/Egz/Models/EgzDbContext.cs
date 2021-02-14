@@ -51,14 +51,24 @@ namespace Egz.Models
                 });
 
             modelBuilder.Entity<Prescription>()
-                .HasData(new Prescription
-                {
-                    IdPrescription = 1,
-                    IdPatient = 1,
-                    IdDoctor = 1,
-                    Date = new DateTime(2021,01,21),
-                    DueDate = new DateTime(2021,01,22)
-                });
+                .HasData(
+                    new Prescription
+                    {
+                        IdPrescription = 1,
+                        IdPatient = 1,
+                        IdDoctor = 1,
+                        Date = new DateTime(2021, 01, 21),
+                        DueDate = new DateTime(2021, 01, 22)
+                    },
+                    new Prescription
+                    {
+                        IdPrescription = 2,
+                        IdPatient = 1,
+                        IdDoctor = 1,
+                        Date = new DateTime(2021,01,23),
+                        DueDate = new DateTime(2021,01,25)
+                    }
+                );
 
             modelBuilder.Entity<Prescription_Medicament>().HasData(new Prescription_Medicament
             {
@@ -66,7 +76,14 @@ namespace Egz.Models
                 Dose = 1,
                 IdMedicament = 1,
                 IdPrescription = 1
-            });
+            },
+                new Prescription_Medicament
+                {
+                    Details = "Details",
+                    Dose = 1,
+                    IdMedicament = 1,
+                    IdPrescription = 2
+                });
         }
     }
 }

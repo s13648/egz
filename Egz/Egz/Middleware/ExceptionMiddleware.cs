@@ -2,6 +2,7 @@
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace Egz.Middleware
 {
@@ -43,5 +44,10 @@ namespace Egz.Middleware
     {
         public int StatusCode { get; set; }
         public string Message { get; set; }
+        
+        public override string ToString()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }

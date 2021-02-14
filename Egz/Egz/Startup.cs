@@ -1,6 +1,10 @@
 using Egz.Extensions;
 using Egz.Middleware;
 using Egz.Models;
+using Egz.Repositories;
+using Egz.Repositories.Interfaces;
+using Egz.Services;
+using Egz.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -28,12 +32,15 @@ namespace Egz
                 );
             services.AddControllers();
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "Egz", Version = "v1"}); });
+
+            services.AddScoped<IMedicamentService,MedicamentService>();
+
+            services.AddScoped<IMedicamentRepository,MedicamentRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseMiddleware<ExceptionMiddleware>();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -41,6 +48,7 @@ namespace Egz
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Egz v1"));
             }
+            app.UseMiddleware<ExceptionMiddleware>();
 
             app.UseHttpsRedirection();
 
