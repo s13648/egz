@@ -1,6 +1,4 @@
 ﻿using System.Threading.Tasks;
-using Egz.Dto.Responses;
-using Egz.Services;
 using Egz.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 

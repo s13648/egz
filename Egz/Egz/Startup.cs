@@ -34,8 +34,10 @@ namespace Egz
             services.AddSwaggerGen(c => { c.SwaggerDoc("v1", new OpenApiInfo {Title = "Egz", Version = "v1"}); });
 
             services.AddScoped<IMedicamentService,MedicamentService>();
+            services.AddScoped<IPatientService,PatientService>();
 
             services.AddScoped<IMedicamentRepository,MedicamentRepository>();
+            services.AddScoped<IPatientRepository,PatientRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

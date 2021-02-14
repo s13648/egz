@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -20,5 +21,7 @@ namespace Egz.Models
 
         [Required]
         public DateTime Birthdate { get; set; }
+        
+        public virtual ICollection<Prescription> Prescriptions { get; set; }
     }
 }

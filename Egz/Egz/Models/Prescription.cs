@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -18,8 +19,12 @@ namespace Egz.Models
         
         [Required]
         public int IdPatient { get; set; }
+
+        public virtual Patient Patient { get; set; }
         
         [Required]
         public int IdDoctor { get; set; }
+
+        public ICollection<Prescription_Medicament> PrescriptionMedicaments { get; set; }
     }
 }

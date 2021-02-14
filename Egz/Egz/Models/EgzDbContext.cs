@@ -20,6 +20,18 @@ namespace Egz.Models
         {
             modelBuilder.Entity<Prescription_Medicament>().HasKey(n => new {n.IdMedicament, n.IdPrescription});
             
+            modelBuilder.Entity<Patient>()
+                .HasMany(p => p.Prescriptions)
+                .WithOne(n => n.Patient)
+                .HasForeignKey(p => p.IdPatient)
+                .OnDelete(DeleteBehavior.Cascade);
+            
+            modelBuilder.Entity<Prescription>()
+                .HasMany(p => p.PrescriptionMedicaments)
+                .WithOne(n => n.Prescription)
+                .HasForeignKey(p => p.IdPrescription)
+                .OnDelete(DeleteBehavior.Cascade);
+            
             modelBuilder
                 .Entity<Patient>()
                 .HasData(new Patient
@@ -29,7 +41,8 @@ namespace Egz.Models
                     FirstName = "Adam",
                     LastName = "Kowalski"
                 });
-
+            
+            
             modelBuilder
                 .Entity<Doctor>()
                 .HasData(new Doctor
